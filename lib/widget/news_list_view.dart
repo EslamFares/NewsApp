@@ -7,24 +7,25 @@ import 'package:news_app_search/widget/news_img.dart';
 import 'package:news_app_search/view/home/model/news_model.dart';
 
 class NewsListView extends StatelessWidget {
-  final NewsModel? newsModel;
+  // final NewsModel? newsModel;
+  final List<Articles>? listData;
 
-  const NewsListView({required this.newsModel});
+  const NewsListView({required this.listData});
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
 
     return ListView.builder(
-        itemCount: newsModel!.articles!.length,
+        itemCount: listData!.length,
         itemBuilder: (context, index) {
-          String? author = newsModel!.articles![index].author;
+          String? author = listData![index].author;
           return InkWell(
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          DetailsView(newsModel!.articles![index])));
+                          DetailsView(listData![index])));
             },
             child: Container(
               color: dSecColor,
@@ -34,7 +35,7 @@ class NewsListView extends StatelessWidget {
               height: 110,
               child:
                   Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                NewsImg(newsModel!.articles![index].urlToImage),
+                NewsImg(listData![index].urlToImage),
                 SizedBox(width: 10),
                 Expanded(
                   child: Container(
@@ -42,7 +43,7 @@ class NewsListView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(newsModel!.articles![index].title.toString()),
+                        Text(listData![index].title.toString()),
                         Container(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +53,7 @@ class NewsListView extends StatelessWidget {
                                     ? author.toString()
                                     : '${author.toString().substring(0, 15)}...'
                                 : "بدون مصدر"),
-                            Text(newsModel!.articles![index].publishedAt
+                            Text(listData![index].publishedAt
                                 .toString()
                                 .split('T')[0])
                           ],

@@ -18,7 +18,7 @@ class BusinessView extends StatelessWidget {
           return Errorview();
         } else {
           return NewsListView(
-            newsModel: cubit.bussinessData,
+            listData: cubit.bussinessData!.articles,
           );
         }
       },

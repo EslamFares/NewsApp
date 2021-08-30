@@ -8,6 +8,8 @@ class ScienceCubit extends Cubit<ScienceStates> {
   ScienceCubit() : super(ScienceInitState());
   static ScienceCubit of(context) => BlocProvider.of(context);
   //=============================
+  static List<Articles> searchListSc = [];
+//=========================
   NewsModel? scienceData;
   Future<void> getScience() async {
     print('go' * 10);
@@ -17,6 +19,7 @@ class ScienceCubit extends Cubit<ScienceStates> {
           url: '/v2/top-headlines?country=eg&category=science&apiKey=$apiKey',
           query: {});
       scienceData = NewsModel.fromJson(resonse.data);
+      scienceData!.articles!.forEach((element) => searchListSc.add(element));
       emit(ScienceDataComeState());
       print('=>>>>>>>>>>>> ${scienceData!.articles!.length}');
     } catch (e) {

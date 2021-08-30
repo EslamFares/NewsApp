@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_search/view/business/view.dart';
+import 'package:news_app_search/view/home/model/news_model.dart';
 import 'package:news_app_search/view/home/state/state.dart';
 import 'package:news_app_search/view/sciece/view.dart';
 import 'package:news_app_search/view/sports/view.dart';
@@ -17,11 +18,7 @@ class HomeCubit extends Cubit<HomeStates> {
   }
 
   //==============
-  List<Widget> body = [
-    BusinessView(),
-    SportsView(),
-    ScienceView()
-  ];
+  List<Widget> body = [BusinessView(), SportsView(), ScienceView()];
 //==========================
- 
+  static List<Articles> searchList = [];
 }

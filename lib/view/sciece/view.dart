@@ -18,7 +18,7 @@ class ScienceView extends StatelessWidget {
           return Errorview();
         } else {
           return NewsListView(
-            newsModel: cubit.scienceData,
+            listData: cubit.scienceData!.articles,
           );
         }
       },

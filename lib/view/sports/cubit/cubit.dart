@@ -8,6 +8,8 @@ class SportCubit extends Cubit<SportStates> {
   SportCubit() : super(SportInitState());
   static SportCubit of(context) => BlocProvider.of(context);
   //=============================
+  static List<Articles> searchListS = [];
+//=========================
   NewsModel? sportData;
   Future<void> getSport() async {
     print('go' * 10);
@@ -17,6 +19,7 @@ class SportCubit extends Cubit<SportStates> {
           url: '/v2/top-headlines?country=eg&category=sport&apiKey=$apiKey',
           query: {});
       sportData = NewsModel.fromJson(resonse.data);
+      sportData!.articles!.forEach((element) => searchListS.add(element));
       emit(SDataComeState());
       print('=>>>>>>>>>>>> ${sportData!.articles!.length}');
     } catch (e) {

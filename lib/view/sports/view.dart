@@ -18,7 +18,7 @@ class SportsView extends StatelessWidget {
           return Errorview();
         } else {
           return NewsListView(
-            newsModel: cubit.sportData,
+            listData: cubit.sportData!.articles,
           );
         }
       },
