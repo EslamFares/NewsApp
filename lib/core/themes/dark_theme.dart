@@ -19,7 +19,7 @@ ThemeData darkTheme() {
       ),
       color: Color(0xff192734),
       centerTitle: true,
-      backwardsCompatibility: false,
+      //TODO: backwardsCompatibility: false,
       systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Color(0xff192734),
           statusBarIconBrightness: Brightness.light),
